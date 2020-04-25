@@ -1,13 +1,11 @@
 import numpy as np
 
-class NeuralNetwork():
-
+class Perceptron():
     def __init__(self):
         # Seed the random number generator
         np.random.seed(1)
 
-        # Set synaptic weights to a 3x1 matrix,
-        # with values from -1 to 1 and mean 0
+        #Input layer, 3x1
         self.synaptic_weights = 2 * np.random.random((3, 1)) - 1
 
     def sigmoid(self, x):
@@ -33,8 +31,8 @@ class NeuralNetwork():
             # Pass training set through the neural network
             output = self.think(training_inputs)
 
-            # Calculate the error rate
-            error = training_outputs - output
+            # Calculate the error
+            error = (training_outputs - output)
 
             # Multiply error by input and gradient of the sigmoid function
             # Less confident weights are adjusted more through the nature of the function
@@ -54,11 +52,38 @@ class NeuralNetwork():
         output = self.sigmoid(np.dot(inputs, self.synaptic_weights))
         return output
 
+class NueralNetwork():
+    def __init__(self):
+        np.random.seed(10) # for generating the same results
+        self.wij   = np.random.rand(3,4) # input to hidden layer weights
+        self.wjk   = np.random.rand(4,1) # hidden layer to output weights
+
+    def sigmoid(self, x, w):
+        z = np.dot(x, w)
+        return 1/(1 + np.exp(-z))
+
+    def sigmoid_derivative(self, x, w):
+        return self.sigmoid(x, w) * (1 - self.sigmoid(x, w))
+
+    def gradient_descent(self, x, y, iterations):
+        for i in range(iterations):
+            Xi = x
+            Xj = self.sigmoid(Xi, self.wij)
+            yhat = self.sigmoid(Xj, self.wjk)
+            # gradients for hidden to output weights
+            g_wjk = np.dot(Xj.T, (y - yhat) * self.sigmoid_derivative(Xj, self.wjk))
+            # gradients for input to hidden weights
+            g_wij = np.dot(Xi.T, np.dot((y - yhat) * self.sigmoid_derivative(Xj, self.wjk), self.wjk.T) * self.sigmoid_derivative(Xi, self.wij))
+            # update weights
+            self.wij += g_wij
+            self.wjk += g_wjk
+        print('The final prediction from neural network are: ')
+        print(yhat)
 
 if __name__ == "__main__":
 
     # Initialize the single neuron neural network
-    neural_network = NeuralNetwork()
+    neural_network = Perceptron()
 
     print("Random starting synaptic weights: ")
     print(neural_network.synaptic_weights)

@@ -52,7 +52,7 @@ class Perceptron():
         output = self.sigmoid(np.dot(inputs, self.synaptic_weights))
         return output
 
-class NueralNetwork():
+class NeuralNetwork():
     def __init__(self):
         np.random.seed(10) # for generating the same results
         self.wij   = np.random.rand(3,4) # input to hidden layer weights
@@ -83,10 +83,10 @@ class NueralNetwork():
 if __name__ == "__main__":
 
     # Initialize the single neuron neural network
-    neural_network = Perceptron()
+    perceptron_network = Perceptron()
 
     print("Random starting synaptic weights: ")
-    print(neural_network.synaptic_weights)
+    print(perceptron_network.synaptic_weights)
 
     # The training set, with 4 examples consisting of 3
     # input values and 1 output value
@@ -98,15 +98,28 @@ if __name__ == "__main__":
     training_outputs = np.array([[0,1,1,0]]).T
 
     # Train the neural network
-    neural_network.train(training_inputs, training_outputs, 10000)
+    perceptron_network.train(training_inputs, training_outputs, 10000)
 
     print("Synaptic weights after training: ")
-    print(neural_network.synaptic_weights)
+    print(perceptron_network.synaptic_weights)
 
     A = str(input("Input 1: "))
     B = str(input("Input 2: "))
     C = str(input("Input 3: "))
 
     print("New situation: input data = ", A, B, C)
-    print("Output data: ")
-    print(neural_network.think(np.array([A, B, C])))
+    print("Perceptron output: ")
+    print(perceptron_network.think(np.array([A, B, C])))
+
+    #initializing neural network with 1 hidden layer
+    neural_network1 = NeuralNetwork()
+
+    #print weights for network
+    print("NN weights for input layer:")
+    print(neural_network1.wij)
+
+    print("NN weights for hidden layer:")
+    print(neural_network1.wjk)
+
+    #train
+    

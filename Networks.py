@@ -52,7 +52,7 @@ class Perceptron():
 
 class NeuralNetwork():
     def __init__(self):
-        np.random.seed(7) # for generating the same results
+        np.random.seed(1) # for generating the same results
         self.wij   = np.random.rand(3,4) # input to hidden layer weights
         self.wjk   = np.random.rand(4,1) # hidden layer to output weights
 

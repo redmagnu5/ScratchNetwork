@@ -26,7 +26,7 @@ if __name__ == "__main__":
     # Train
     iterations = int(input("Train networks how many times? "))
     perceptron_network.train(training_inputs, training_outputs, iterations)
-    neural_network.train(training_inputs, training_outputs, 40000)
+    neural_network.train(training_inputs, training_outputs, iterations)
 
     #Give new input
     print("new inputs to test: ")

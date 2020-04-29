@@ -65,21 +65,21 @@ iterations are also considered.
         Perceptron prediction:
         [0.658589]
         Neural network (1 layer) prediction:
-        [0.99895181]
+        [0.59364061]
 ```
 * 50 iterations:
 ```bash
         Perceptron prediction:
         [0.97689888]
         Neural network (1 layer) prediction:
-        [0.99895181]
+        [0.85461662]
 ```
 * 1000 iterations:
 ```bash
         Perceptron prediction:
         [0.99929937]
         Neural network (1 layer) prediction:
-        [0.99895181]
+        [0.99189665]
 ```
 
 
@@ -92,29 +92,29 @@ iterations are also considered.
         Perceptron prediction:
         [0.46955296]
         Neural network (1 layer) prediction:
-        [0.00234966]
+        [0.58250423]
 ```
 * 50 iterations:
 ```bash
         Perceptron prediction:
         [0.13804798]
         Neural network (1 layer) prediction:
-        [0.00234966]
+        [0.21605417]
 ```
 * 1000 iterations:
 ```bash
         Perceptron prediction:
         [0.02575143]
         Neural network (1 layer) prediction:
-        [0.00234966]
+        [0.01710238]
 ```
 
 ## Conclusion
 
-Its clear that the neural network with 1 hidden layer got much more accurate
-much faster, which is to be expected. The hidden layer adds a lot more weights
-and biases to be considered for adjustment which corresponds to more possible
-features of the data set.
+The neural network with 1 hidden layer seemed to only start outpacing the
+perceptron network after large amounts of training. This implies that the
+neural network scales a lot better, which is to be expected. More training with
+other data sets and different scenarios can confirm this.
 
 
 
